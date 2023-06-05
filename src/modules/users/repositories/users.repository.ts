@@ -1,7 +1,6 @@
 
 import { CreateUserDto } from '../dto/create-user.dto';
 import { User } from '../entities/user.entity';
-import { Delete } from '@nestjs/common';
 import { UpdateUserDto } from '../dto/update-user.dto';
 export abstract class UsersRepository {
   abstract create(data: CreateUserDto): Promise<User> | User;

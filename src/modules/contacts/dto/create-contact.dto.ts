@@ -1,13 +1,17 @@
-import { randomUUID } from "crypto";
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
+
 
 export class CreateContactDto {
-    readonly id: string;
-    name: string;
-    phone: string
-  
-    constructor() {
-      this.id = randomUUID(); //isto vai criar o uuid automaticamente
-    }
-}
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(120)
+  name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  phone: string;
+  }
 
 
+
+ 

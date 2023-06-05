@@ -1,6 +1,6 @@
 import { hashSync } from "bcryptjs";
 import { Exclude, Transform } from "class-transformer";
-import { IsString, IsNotEmpty, MaxLength, IsEmail, MinLength, IsBoolean } from "class-validator";
+import { IsString, IsNotEmpty, MaxLength, IsEmail, MinLength, IsBoolean, IsPhoneNumber, IsOptional } from "class-validator";
 
 
 export class CreateUserDto {
@@ -20,9 +20,11 @@ export class CreateUserDto {
   @Transform(({value} : {value: string}) => hashSync(value, 10), {
     groups: ['transform']
   })
-
-
   password: string;
+
+  @IsOptional()
+  @IsString()
+  phone: string
 
   @IsBoolean()
   is_medic: boolean;

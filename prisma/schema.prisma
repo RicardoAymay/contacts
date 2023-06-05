@@ -15,17 +15,25 @@ model User{
   name String
   email String @unique
   password String
+  phone String @unique
   is_medic Boolean @default(false)
   is_admin Boolean @default(false)
   register_date DateTime
-  contact Contact[]
+  userContacts UserContacts[]
 }
 
 model Contact{
   id String @id
   name String
   phone String
-  user User @relation(fields: [userId], references: [id])
   register_date DateTime
+  userContacts UserContacts[]
+}
+
+model UserContacts {
+  user User @relation(fields: [userId], references: [id])
   userId String
+  contact Contact @relation(fields: [contactId], references: [id])
+  contactId String
+  @@id([userId, contactId])
 }
