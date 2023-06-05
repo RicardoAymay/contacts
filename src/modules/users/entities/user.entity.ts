@@ -6,6 +6,7 @@ export class User {
   email: string;
   @Exclude()
   password: string;
+  phone: string;
   is_medic: boolean;
   is_admin: boolean;
   register_date: Date;
