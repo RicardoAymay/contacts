@@ -4,11 +4,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './repositories/users.repository';
 
 
+
 @Injectable()
 export class UsersService {
   constructor(private usersRepository: UsersRepository){}
   async create(createUserDto: CreateUserDto) {
-    const user = await this.usersRepository.create(createUserDto)
+      const user = await this.usersRepository.create(createUserDto)
     return user;
   }
 

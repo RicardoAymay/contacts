@@ -6,6 +6,10 @@ import { UpdateUserDto } from '../../dto/update-user.dto';
 
 
 export class UsersInMemoryRepository implements UsersRepository{
+    findByEmail(email: string): User | Promise<User> {
+        const user = this.database.find((user) => user.email === email)
+        return user
+    }
     private database: User[] = []
     create(data: CreateUserDto): User | Promise<User> {
         const newUser = new User()
